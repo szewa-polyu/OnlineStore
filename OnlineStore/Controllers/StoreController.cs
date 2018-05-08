@@ -19,21 +19,19 @@ namespace OnlineStore.Controllers
         }
         
         // GET: Store/Browse?category=Food
-        public string Browse(string category)
+        public ActionResult Browse(string category)
         {
-            string message = HttpUtility.HtmlEncode("Store.Browse, Genre = "
-                + category);
+            // Retrieve Categories and its Associated Products from database
+            Category categoryModel = storeDb.Categories.Include("Products")
+                .Single(c => c.Name == category);
 
-            return message;
+            return View(categoryModel);
         }
         
         // GET: Store/Details/5
         public ActionResult Details(int id)
         {
-            Product product = new Product
-            {
-                Name = "Product " + id
-            };
+            Product product = storeDb.Products.Find(id);
             return View(product);
         }
     }

@@ -11,5 +11,6 @@ namespace OnlineStore.Models
         public int CategoryNo { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
+        public List<Product> Products { get; set; }
     }
 }
