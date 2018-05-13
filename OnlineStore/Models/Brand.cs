@@ -11,5 +11,7 @@ namespace OnlineStore.Models
         public string BrandNo { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
+
+        //public List<Product> Products { get; set; }
     }
 }
