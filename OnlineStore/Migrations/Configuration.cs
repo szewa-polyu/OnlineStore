@@ -1,13 +1,27 @@
-ï»¿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-
-namespace OnlineStore.Models
+namespace OnlineStore.Migrations
 {
-    public class SampleData : DropCreateDatabaseIfModelChanges<OnlineStoreEntities>
+    using OnlineStore.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<OnlineStore.Models.OnlineStoreEntities>
     {
-        protected override void Seed(OnlineStoreEntities context)
+        public Configuration()
         {
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "OnlineStore.Models.OnlineStoreEntities";
+        }
+
+        protected override void Seed(OnlineStore.Models.OnlineStoreEntities context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
+
             List<Category> Categories = new List<Category>
             {
                 new Category { Name = "Rock" },
@@ -36,7 +50,7 @@ namespace OnlineStore.Models
                 new Brand { Name = "Alice In Chains" },
                 new Brand { Name = "Amy Winehouse" },
                 new Brand { Name = "Anita Ward" },
-                new Brand { Name = "AntÃ´nio Carlos Jobim" },
+                new Brand { Name = "Antônio Carlos Jobim" },
                 new Brand { Name = "Apocalyptica" },
                 new Brand { Name = "Audioslave" },
                 new Brand { Name = "Barry Wordsworth & BBC Concert Orchestra" },
@@ -52,16 +66,16 @@ namespace OnlineStore.Models
                 new Brand { Name = "Caetano Veloso" },
                 new Brand { Name = "Cake" },
                 new Brand { Name = "Calexico" },
-                new Brand { Name = "CÃ¡ssia Eller" },
+                new Brand { Name = "Cássia Eller" },
                 new Brand { Name = "Chic" },
                 new Brand { Name = "Chicago Symphony Orchestra & Fritz Reiner" },
                 new Brand { Name = "Chico Buarque" },
-                new Brand { Name = "Chico Science & NaÃ§Ã£o Zumbi" },
+                new Brand { Name = "Chico Science & Nação Zumbi" },
                 new Brand { Name = "Choir Of Westminster Abbey & Simon Preston" },
                 new Brand { Name = "Chris Cornell" },
                 new Brand { Name = "Christopher O'Riley" },
                 new Brand { Name = "Cidade Negra" },
-                new Brand { Name = "ClÃ¡udio Zoli" },
+                new Brand { Name = "Cláudio Zoli" },
                 new Brand { Name = "Creedence Clearwater Revival" },
                 new Brand { Name = "David Coverdale" },
                 new Brand { Name = "Deep Purple" },
@@ -85,7 +99,7 @@ namespace OnlineStore.Models
                 new Brand { Name = "Gilberto Gil" },
                 new Brand { Name = "Godsmack" },
                 new Brand { Name = "Gonzaguinha" },
-                new Brand { Name = "GÃ¶teborgs Symfoniker & Neeme JÃ¤rvi" },
+                new Brand { Name = "Göteborgs Symfoniker & Neeme Järvi" },
                 new Brand { Name = "Guns N' Roses" },
                 new Brand { Name = "Gustav Mahler" },
                 new Brand { Name = "Incognito" },
@@ -98,10 +112,10 @@ namespace OnlineStore.Models
                 new Brand { Name = "Jota Quest" },
                 new Brand { Name = "Judas Priest" },
                 new Brand { Name = "Julian Bream" },
-                new Brand { Name = "Kent Nagano and Orchestre de l'OpÃ©ra de Lyon" },
+                new Brand { Name = "Kent Nagano and Orchestre de l'Opéra de Lyon" },
                 new Brand { Name = "Kiss" },
                 new Brand { Name = "Led Zeppelin" },
-                new Brand { Name = "LegiÃ£o Urbana" },
+                new Brand { Name = "Legião Urbana" },
                 new Brand { Name = "Lenny Kravitz" },
                 new Brand { Name = "Les Arts Florissants & William Christie" },
                 new Brand { Name = "London Symphony Orchestra & Sir Charles Mackerras" },
@@ -118,12 +132,12 @@ namespace OnlineStore.Models
                 new Brand { Name = "Michael Tilson Thomas & San Francisco Symphony" },
                 new Brand { Name = "Miles Davis" },
                 new Brand { Name = "Milton Nascimento" },
-                new Brand { Name = "MÃ¶tley CrÃ¼e" },
-                new Brand { Name = "MotÃ¶rhead" },
+                new Brand { Name = "Mötley Crüe" },
+                new Brand { Name = "Motörhead" },
                 new Brand { Name = "Nash Ensemble" },
                 new Brand { Name = "Nicolaus Esterhazy Sinfonia" },
                 new Brand { Name = "Nirvana" },
-                new Brand { Name = "O TerÃ§o" },
+                new Brand { Name = "O Terço" },
                 new Brand { Name = "Olodum" },
                 new Brand { Name = "Orchestra of The Age of Enlightenment" },
                 new Brand { Name = "Os Paralamas Do Sucesso" },
@@ -168,7 +182,7 @@ namespace OnlineStore.Models
                 new Brand { Name = "Van Halen" },
                 new Brand { Name = "Various Brands" },
                 new Brand { Name = "Velvet Revolver" },
-                new Brand { Name = "VinÃ­cius De Moraes" },
+                new Brand { Name = "Vinícius De Moraes" },
                 new Brand { Name = "Wilhelm Kempff" },
                 new Brand { Name = "Yehudi Menuhin" },
                 new Brand { Name = "Yo-Yo Ma" },
@@ -183,15 +197,15 @@ namespace OnlineStore.Models
                 new Product { Name = "Let There Be Rock", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "AC/DC"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Balls to the Wall", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Accept"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Restless and Wild", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Accept"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "GÃ³recki: Symphony No. 3", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Adrian Leaper & Doreen de Feis"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Górecki: Symphony No. 3", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Adrian Leaper & Doreen de Feis"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Big Ones", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Aerosmith"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Quiet Songs", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Aisha Duo"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Jagged Little Pill", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Alanis Morissette"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Facelift", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Alice In Chains"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Frank", Category = Categories.Single(g => g.Name == "Pop"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Amy Winehouse"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Ring My Bell", Category = Categories.Single(g => g.Name == "Disco"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Anita Ward"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Chill: Brazil (Disc 2)", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "AntÃ´nio Carlos Jobim"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Warner 25 Anos", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "AntÃ´nio Carlos Jobim"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Chill: Brazil (Disc 2)", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Antônio Carlos Jobim"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Warner 25 Anos", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Antônio Carlos Jobim"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Plays Metallica By Four Cellos", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Apocalyptica"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Revelations", Category = Categories.Single(g => g.Name == "Alternative"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Audioslave"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Audioslave", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Audioslave"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -210,17 +224,17 @@ namespace OnlineStore.Models
                 new Product { Name = "Sozinho Remix Ao Vivo", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Caetano Veloso"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Cake: B-Sides and Rarities", Category = Categories.Single(g => g.Name == "Alternative"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Cake"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Carried to Dust (Bonus Track Version)", Category = Categories.Single(g => g.Name == "Alternative"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Calexico"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "CÃ¡ssia Eller - Sem Limite [Disc 1]", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "CÃ¡ssia Eller"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Cássia Eller - Sem Limite [Disc 1]", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Cássia Eller"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Le Freak", Category = Categories.Single(g => g.Name == "Disco"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chic"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Scheherazade", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chicago Symphony Orchestra & Fritz Reiner"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Minha Historia", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chico Buarque"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Afrociberdelia", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chico Science & NaÃ§Ã£o Zumbi"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Da Lama Ao Caos", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chico Science & NaÃ§Ã£o Zumbi"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Afrociberdelia", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chico Science & Nação Zumbi"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Da Lama Ao Caos", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chico Science & Nação Zumbi"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Carry On", Category = Categories.Single(g => g.Name == "Alternative"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Chris Cornell"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "SCRIABIN: Vers la flamme", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Christopher O'Riley"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "AcÃºstico MTV [Live]", Category = Categories.Single(g => g.Name == "Reggae"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Cidade Negra"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Acústico MTV [Live]", Category = Categories.Single(g => g.Name == "Reggae"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Cidade Negra"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Cidade Negra - Hits", Category = Categories.Single(g => g.Name == "Reggae"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Cidade Negra"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Na Pista", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "ClÃ¡udio Zoli"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Na Pista", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Cláudio Zoli"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Chronicle, Vol. 1", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Creedence Clearwater Revival"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Chronicle, Vol. 2", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Creedence Clearwater Revival"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Into The Light", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "David Coverdale"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -241,7 +255,7 @@ namespace OnlineStore.Models
                 new Product { Name = "Un-Led-Ed", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Dread Zeppelin"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "The Best of Ed Motta", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Ed Motta"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Adams, John: The Chairman Dances", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Edo de Waart & San Francisco Symphony"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Elis Regina-Minha HistÃ³ria", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Elis Regina"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Elis Regina-Minha História", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Elis Regina"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Pachelbel: Canon & Gigue", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "English Concert & Trevor Pinnock"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Unplugged", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Eric Clapton"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "The Cream Of Clapton", Category = Categories.Single(g => g.Name == "Blues"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Eric Clapton"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -256,10 +270,10 @@ namespace OnlineStore.Models
                 new Product { Name = "Bongo Fury", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Frank Zappa & Captain Beefheart"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Roda De Funk", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Funk Como Le Gusta"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Quanta Gente Veio Ver (Live)", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Gilberto Gil"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Quanta Gente Veio ver--BÃ´nus De Carnaval", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Gilberto Gil"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Quanta Gente Veio ver--Bônus De Carnaval", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Gilberto Gil"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Faceless", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Godsmack"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Meus Momentos", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Gonzaguinha"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Nielsen: The Six Symphonies", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "GÃ¶teborgs Symfoniker & Neeme JÃ¤rvi"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Nielsen: The Six Symphonies", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Göteborgs Symfoniker & Neeme Järvi"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Appetite for Destruction", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Guns N' Roses"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Use Your Illusion I", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Guns N' Roses"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Use Your Illusion II", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Guns N' Roses"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -292,7 +306,7 @@ namespace OnlineStore.Models
                 new Product { Name = "Jorge Ben Jor 25 Anos", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Jorge Ben"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Jota Quest-1995", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Jota Quest"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Living After Midnight", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Judas Priest"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Weill: The Seven Deadly Sins", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Kent Nagano and Orchestre de l'OpÃ©ra de Lyon"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Weill: The Seven Deadly Sins", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Kent Nagano and Orchestre de l'Opéra de Lyon"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Greatest Kiss", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Kiss"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Unplugged [Live]", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Kiss"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "BBC Sessions [Disc 1] [Live]", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Led Zeppelin"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -309,7 +323,7 @@ namespace OnlineStore.Models
                 new Product { Name = "Presence", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Led Zeppelin"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "The Song Remains The Same (Disc 1)", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Led Zeppelin"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "The Song Remains The Same (Disc 2)", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Led Zeppelin"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Mais Do Mesmo", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "LegiÃ£o Urbana"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Mais Do Mesmo", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Legião Urbana"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Greatest Hits", Category = Categories.Single(g => g.Name == "Reggae"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Lenny Kravitz"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Greatest Hits", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Lenny Kravitz"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Greatest Hits", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Lenny Kravitz"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -336,15 +350,15 @@ namespace OnlineStore.Models
                 new Product { Name = "The Essential Miles Davis [Disc 2]", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Miles Davis"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Milton Nascimento Ao Vivo", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Milton Nascimento"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Minas", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Milton Nascimento"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Motley Crue Greatest Hits", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "MÃ¶tley CrÃ¼e"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Ace Of Spades", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "MotÃ¶rhead"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Motley Crue Greatest Hits", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Mötley Crüe"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Ace Of Spades", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Motörhead"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Mozart: Chamber Music", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Nash Ensemble"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "The Best of Beethoven", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Nicolaus Esterhazy Sinfonia"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Nevermind", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Nirvana"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Compositores", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "O TerÃ§o"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Compositores", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "O Terço"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Olodum", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Olodum"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Bach: The Brandenburg Concertos", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Orchestra of The Age of Enlightenment"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "AcÃºstico MTV", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Os Paralamas Do Sucesso"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Acústico MTV", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Os Paralamas Do Sucesso"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Arquivo II", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Os Paralamas Do Sucesso"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Arquivo Os Paralamas Do Sucesso", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Os Paralamas Do Sucesso"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Tribute", Category = Categories.Single(g => g.Name == "Metal"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Ozzy Osbourne"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -377,7 +391,7 @@ namespace OnlineStore.Models
                 new Product { Name = "Prokofiev: Symphony No.1", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Sergei Prokofiev & Yuri Temirkanov"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Wagner: Favourite Overtures", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Sir Georg Solti & Wiener Philharmoniker"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Maquinarama", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Skank"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "O Samba PoconÃ©", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Skank"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "O Samba Poconé", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Skank"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "A-Sides", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Soundgarden"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Heart of the Night", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Spyro Gyra"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Morning Dance", Category = Categories.Single(g => g.Name == "Jazz"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Spyro Gyra"), ImageUrl = "/Content/Images/placeholder.gif" },
@@ -414,16 +428,16 @@ namespace OnlineStore.Models
                 new Product { Name = "The Best Of Van Halen, Vol. I", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Van Halen"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Van Halen III", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Van Halen"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Van Halen", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Van Halen"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "AxÃ© Bahia 2001", Category = Categories.Single(g => g.Name == "Pop"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Various Brands"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Axé Bahia 2001", Category = Categories.Single(g => g.Name == "Pop"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Various Brands"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Sambas De Enredo 2001", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Various Brands"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Vozes do MPB", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Various Brands"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Contraband", Category = Categories.Single(g => g.Name == "Rock"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Velvet Revolver"), ImageUrl = "/Content/Images/placeholder.gif" },
-                new Product { Name = "Vinicius De Moraes", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "VinÃ­cius De Moraes"), ImageUrl = "/Content/Images/placeholder.gif" },
+                new Product { Name = "Vinicius De Moraes", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Vinícius De Moraes"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Bach: Goldberg Variations", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Wilhelm Kempff"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Bartok: Violin & Viola Concertos", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Yehudi Menuhin"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Bach: The Cello Suites", Category = Categories.Single(g => g.Name == "Classical"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Yo-Yo Ma"), ImageUrl = "/Content/Images/placeholder.gif" },
                 new Product { Name = "Ao Vivo [IMPORT]", Category = Categories.Single(g => g.Name == "Latin"), Price = 8.99M, Brand = Brands.Single(a => a.Name == "Zeca Pagodinho"), ImageUrl = "/Content/Images/placeholder.gif" },
-            }.ForEach(a => context.Products.Add(a));
+            }.ForEach(a => context.Products.AddOrUpdate(a));
         }
     }
 }

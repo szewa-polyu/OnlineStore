@@ -77,6 +77,10 @@ namespace OnlineStore.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.Category);
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "Name", product.Brand);
+
             return View(product);
         }
 
@@ -93,6 +97,10 @@ namespace OnlineStore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.Category);
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "Name", product.Brand);
+
             return View(product);
         }
 
