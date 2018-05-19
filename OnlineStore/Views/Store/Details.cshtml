@@ -9,16 +9,16 @@
 </p>
 <div id="album-details">
     <p>
-        <em>@Html.DisplayNameFor(model => model.Category) + ":"</em>
+        <em>@(Html.DisplayNameFor(model => model.Category) + ":")</em>
         @Model.Category.Name
     </p>
     <p>
-        <em>@Html.DisplayNameFor(model => model.Brand) + ":"</em>
+        <em>@(Html.DisplayNameFor(model => model.Brand) + ":")</em>
         @Model.Brand.Name
     </p>
     <p>
-        <em>@Html.DisplayNameFor(model => model.Price) + ":"</em>
-        @String.Format("{0:F}", Model.Price)
+        <em>@(Html.DisplayNameFor(model => model.Price) + ":")</em>
+        @string.Format("{0:F}", Model.Price)
     </p>
     <p class="button">
         @Html.ActionLink("Add to cart", "AddToCart",

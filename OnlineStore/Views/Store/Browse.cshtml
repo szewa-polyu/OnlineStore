@@ -1,6 +1,7 @@
 ﻿@model OnlineStore.Models.Category
 
 @using OnlineStore.Models;
+@using MoreLinq;
 
 @{
     ViewBag.Title = "Browse";
@@ -8,14 +9,64 @@
 
 <h2>Browsing Category: @Model.Name</h2>
 
-<ul>
-    @foreach (Product product in Model.Products)
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Album example</h1>
+            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+            <p>
+                <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+    @foreach (IEnumerable<Product> productsInRow in Model.Products.Batch(3))
     {
-        <li>
-            @Html.ActionLink(product.Name, "Details", new
+        <div class="row">
+            @foreach (Product product in productsInRow)
             {
-                id = product.ProductId
-            })
-        </li>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">                        
+                        <img class="card-img-top"
+                             data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                             alt="Card image cap"
+                             src='@product.ImageUrl'>
+                        <div class="card-body">                            
+                            <p class="cart-text">
+                                @product.Name
+                            </p>
+                            <p class="card-text">
+                                @(string.IsNullOrEmpty(product.Desc) ? "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." : product.Desc)
+                            </p>
+                            <p class="card-text">
+                                @string.Format("{0:F}", product.Price)
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @Html.ActionLink("View", "Details", new
+                                    {
+                                        id = product.ProductId
+                                    })
+                                    @*<button type="button" class="btn btn-sm btn-outline-secondary">View</button>*@
+                                    @*<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>*@
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     }
-</ul>
+
+            
+</main>
+
+@section Scripts {
+    <script src="~/Scripts/holder.min.js"></script> 
+}
